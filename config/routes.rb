@@ -5,11 +5,23 @@ Rails.application.routes.draw do
   # User routes
 
   # CREATE
-  get("/insert_user_record", {:controller => "users", :action => "create" })
+  post("/insert_user_record", {:controller => "users", :action => "create" })
 
   # READ
   get("/users", {:controller => "users", :action => "index"})
   get("/users/:the_username", {:controller => "users", :action => "show"})
+
+  # SIGN IN
+  get("/user_sign_in", { :controller => "users", :action => "sign_in"})
+
+  # SIGN UP
+  get("/user_sign_up", { :controller => "users", :action => "sign_up"})
+
+  # SIGN OUT
+  get("/user_sign_out", { :controller => "users", :action => "sign_out"})
+
+  # Verification
+  post("/verify_credentials", { :controller => "users", :action => "verification"})
 
   # UPDATE
   get("/update_user/:the_user_id", {:controller => "users", :action => "update" })
@@ -41,5 +53,6 @@ Rails.application.routes.draw do
   # DELETE
 
   get("/delete_comment/:the_comment_id", { :controller => "comments", :action => "destroy"})
+
 
 end
